@@ -1,41 +1,59 @@
-<p id="notice"><%= notice %></p>
+<h2 class="page-title">Shows</h2>
 
-<h1>Shows</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Number of episodes</th>
-      <th>Publishing service</th>
-      <th>Website</th>
-      <th>Frequency</th>
-      <th>Listeners last 30 days</th>
-      <th>Price</th>
-      <th>Monthly expenses</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @shows.each do |show| %>
-      <tr>
-        <td><%= show.name %></td>
-        <td><%= show.number_of_episodes %></td>
-        <td><%= show.publishing_service %></td>
-        <td><%= show.website %></td>
-        <td><%= show.frequency %></td>
-        <td><%= show.listeners_last_30_days %></td>
-        <td><%= show.price %></td>
-        <td><%= show.monthly_expenses %></td>
-        <td><%= link_to 'Show', show %></td>
-        <td><%= link_to 'Edit', edit_show_path(show) %></td>
-        <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class="search-header">
+    <%= form_tag(shows_path, method: :get, id: 'search-form') do %>
+    <div class="row">
+      <div class="form-group col-8 col-md-4">
+        <div class="input-group">
+          <%= text_field_tag( :q, params[:q], class: 'form-control', 'data-query': params[:q], 'data-open-search': params.key?(:q), placeholder: 'Search shows', id: 'shows_search', autocomplete: :off )
+          %>
+          <%= link_to shows_path do %>
+            <span class="icon-control cancel" title="Clear the Search">&times;</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= submit_tag 'Search', class: "btn btn-primary" %>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div> 
+</div>
 
-<br>
+<div class="container-fluid">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th class="d-none d-md-table-cell">Number of Episodes</th>
+          <th>Website</th>
+          <th class="d-none d-sm-table-cell">Listeners (last 30 days)</th>
+          <th class="d-none d-lg-table-cell">Price</th>
+          <th class="d-none d-lg-table-cell">Monthly Expenses</th>
+          <th></th>
+        </tr>
+      </thead>
 
-<%= link_to 'New Show', new_show_path %>
+      <tbody>
+        <% @shows.each do |show| %>
+          <tr>
+            <td><%= show.name %></td>
+            <td class="d-none d-md-table-cell"><%= show.number_of_episodes %></td>
+            <td><%= show.website %></td>
+            <td class="d-none d-sm-table-cell"><%= show.listeners_last_30_days %></td>
+            <td class="d-none d-lg-table-cell">$<%= show.price %></td>
+            <td class="d-none d-lg-table-cell">$<%= show.monthly_expenses %></td>
+            <td>
+              <%= link_to 'View', show, class: 'btn btn-outline-primary' %>
+              <%= link_to 'Buy Now', show, class: 'btn btn-primary' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= link_to 'Add a show', new_show_path, class: 'btn btn-primary' %>
+</div>
+<%= paginate @shows, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>

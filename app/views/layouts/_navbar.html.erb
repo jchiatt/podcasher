@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-md">
-  <a class="navbar-brand" href="/#">Podcasher</a>
+  <a class="navbar-brand" href="/#">
+    <%= image_tag "/assets/Podcasher.png", style: 'width: 150px' %>
+  </a>
   <ul class="navbar-nav ml-auto">
   <% if user_signed_in? %>
     <li class="nav-item d-none d-md-inline-block">

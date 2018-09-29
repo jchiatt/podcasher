@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @show.name %>
+</p>
+
+<p>
+  <strong>Number of episodes:</strong>
+  <%= @show.number_of_episodes %>
+</p>
+
+<p>
+  <strong>Publishing service:</strong>
+  <%= @show.publishing_service %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @show.website %>
+</p>
+
+<p>
+  <strong>Frequency:</strong>
+  <%= @show.frequency %>
+</p>
+
+<p>
+  <strong>Listeners last 30 days:</strong>
+  <%= @show.listeners_last_30_days %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @show.price %>
+</p>
+
+<p>
+  <strong>Monthly expenses:</strong>
+  <%= @show.monthly_expenses %>
+</p>
+
+<%= link_to 'Edit', edit_show_path(@show) %> |
+<%= link_to 'Back', shows_path %>

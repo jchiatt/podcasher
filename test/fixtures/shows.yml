@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  number_of_episodes: 
+  publishing_service: MyString
+  website: MyString
+  frequency: MyString
+  listeners_last_30_days: 
+  price: 9.99
+  monthly_expenses: 9.99
+
+two:
+  name: MyString
+  number_of_episodes: 
+  publishing_service: MyString
+  website: MyString
+  frequency: MyString
+  listeners_last_30_days: 
+  price: 9.99
+  monthly_expenses: 9.99
